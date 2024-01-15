@@ -1,7 +1,6 @@
 'use strict';
 
 require('dotenv').config();
-require('node:events');
 const { Client, IntentsBitField } = require('discord.js');
 
 const client = new Client({
@@ -13,4 +12,8 @@ const client = new Client({
   ],
 });
 
-client.login(process.env.TOKEN);
+client.on('ready', (bot) => {
+  console.log(`${bot.user.tag} is launched`);
+});
+
+client.login(process.env.TOKEN,);
