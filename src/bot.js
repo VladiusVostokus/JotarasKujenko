@@ -16,4 +16,8 @@ client.on('ready', (bot) => {
   console.log(`${bot.user.tag} is launched`);
 });
 
+client.on('messageCreate', (msg) =>{
+  console.log(msg.author.globalName, msg.channel.name, msg.content);
+});
+
 client.login(process.env.TOKEN,);
