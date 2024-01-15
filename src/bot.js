@@ -16,8 +16,20 @@ client.on('ready', (bot) => {
   console.log(`${bot.user.tag} is launched`);
 });
 
-client.on('messageCreate', (msg) =>{
-  console.log(msg.author.globalName, msg.channel.name, msg.content);
+const REPLY = "Губка Боб Квадратні штани!";
+
+client.on('messageCreate', (msg) => {
+  if(msg.author.bot) return;
+
+  console.log(msg.author.globalName,
+    msg.channel.name,
+    msg.content); 
+
+  if(msg.content === 'Хто проживає на дні океану?') 
+    msg.reply(REPLY);
+
+  if(msg.content === 'Шпаристий, жовтий, куди не зирни') 
+    msg.reply(REPLY);
 });
 
 client.login(process.env.TOKEN,);
