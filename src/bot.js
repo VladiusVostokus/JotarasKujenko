@@ -22,7 +22,7 @@ client.on('interactionCreate', (interaction) => {
   if(interaction.commandName === 'hello') interaction.reply('hello!');
 });
 
-const REPLY = "Губка Боб Квадратні штани!";
+const REPLY = 'Губка Боб Квадратні штани!';
 
 client.on('messageCreate', (msg) => {
   if(msg.author.bot) return;
