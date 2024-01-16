@@ -16,6 +16,12 @@ client.on('ready', (bot) => {
   console.log(`${bot.user.tag} is launched`);
 });
 
+client.on('interactionCreate', (interaction) => {
+  if(!interaction.isChatInputCommand()) return;
+
+  if(interaction.commandName === 'hello') interaction.reply('hello!');
+});
+
 const REPLY = "Губка Боб Квадратні штани!";
 
 client.on('messageCreate', (msg) => {
