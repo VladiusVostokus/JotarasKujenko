@@ -17,6 +17,16 @@ const commands = [
                 description: 'The first num',
                 type: ApplicationCommandOptionType.Number,
                 required: true,
+                choices: [
+                    {
+                        name: 'one',
+                        value: 1,
+                    },
+                    {
+                        name: 'two',
+                        value: 2,
+                    },
+                ],
             },
             {
                 name: 'second',
