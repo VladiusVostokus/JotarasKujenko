@@ -1,12 +1,30 @@
 'use strict';
 
 require('dotenv').config();
-const {REST, Routes} = require('discord.js');
+const { REST, Routes, ApplicationCommandOptionType } = require('discord.js');
 
 const commands = [
     {
         name: 'hello',
         description: 'Replies with hello',
+    },
+    {
+        name: 'add',
+        description: 'Replies with hello',
+        options: [
+            {
+                name: 'first',
+                description: 'The first num',
+                type: ApplicationCommandOptionType.Number,
+                required: true,
+            },
+            {
+                name: 'second',
+                description: 'The second num',
+                type: ApplicationCommandOptionType.Number,
+                required: true,
+            }
+        ],
     },
 ];
 
