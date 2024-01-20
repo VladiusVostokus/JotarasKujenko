@@ -32,8 +32,14 @@ client.on('interactionCreate', (interaction) => {
   if(interaction.commandName === 'embed')
   {
     const embed = new EmbedBuilder()
-      .setTitle("Назва вставки")
-      .setDescription("Опис");
+      .setTitle('Назва вставки')
+      .setDescription('Опис')
+      .setColor('Green')
+      .addFields({ 
+        name: 'Назва', 
+        value: 'Значення', 
+        inline: true ,
+      });
 
     interaction.reply({ embeds: [embed] });
   }
