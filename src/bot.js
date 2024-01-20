@@ -44,9 +44,11 @@ client.on('interactionCreate', (interaction) => {
         name: 'Назва2', 
         value: 'Значення2', 
         inline: true ,
-      });
+      })
+      .setImage('https://i.imgur.com/AfFp7pu.png');
 
     interaction.reply({ embeds: [embed] });
+    
   }
 });
 
