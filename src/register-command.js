@@ -10,7 +10,7 @@ const commands = [
     },
     {
         name: 'add',
-        description: 'Replies with hello',
+        description: 'Replies sum of 2 numbers',
         options: [
             {
                 name: 'first',
@@ -35,6 +35,10 @@ const commands = [
                 required: true,
             }
         ],
+    },
+    {
+        name: 'embed',
+        description: 'Send an embed',
     },
 ];
 
