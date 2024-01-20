@@ -39,6 +39,11 @@ client.on('interactionCreate', (interaction) => {
         name: 'Назва', 
         value: 'Значення', 
         inline: true ,
+      },
+      { 
+        name: 'Назва2', 
+        value: 'Значення2', 
+        inline: true ,
       });
 
     interaction.reply({ embeds: [embed] });
