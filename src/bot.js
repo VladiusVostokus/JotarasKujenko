@@ -50,14 +50,65 @@ client.on('ready', async (c) => {
       components: [row]
     });
 
-    process.exit();
+    //process.exit();
 
   } catch (error) {
     console.log(err);
   }
 });
 
-client.on('interactionCreate', (interaction) => {
+client.on('interactionCreate', async(interaction) => {
+  
+
+  if(!interaction.isButton()) return;
+
+  await interaction.deferReply({ ephemeral: true});
+
+  // тут обробники \ команд
+
+  if(interaction.isButton()) {
+    const role = interaction.guild.roles.cache.get(
+      interaction.customId
+    );
+
+    if(!role) {
+      interaction.editReply({
+        content: 'Ролі не існує',
+      });
+      return;
+    }
+
+    const hasRole = interaction.member.roles.cache.has(role.id);
+
+    if (hasRole) {
+      await interaction.member.roles.remove(role);
+      await interaction.editReply(`Роль ${role} була взнята`);
+      return;
+    }
+    await interaction.member.roles.add(role);
+    await interaction.editReply(`Роль ${role} була назначена`);
+  }
+});
+
+const REPLY = 'Губка Боб Квадратні штани!';
+
+client.on('messageCreate', (msg) => {
+  if(msg.author.bot) return;
+
+  console.log(msg.author.globalName,
+    msg.channel.name,
+    msg.content); 
+
+  if(msg.content === 'Хто проживає на дні океану?') 
+    msg.reply(REPLY);
+
+  if(msg.content === 'Шпаристий, жовтий, куди не зирни') 
+    msg.reply(REPLY);
+});
+
+client.login(process.env.TOKEN);
+
+/*
   if(!interaction.isChatInputCommand()) return;
 
   if(interaction.commandName === 'hello') interaction.reply('hello!');
@@ -89,24 +140,5 @@ client.on('interactionCreate', (interaction) => {
       .setImage('https://i.imgur.com/AfFp7pu.png');
 
     interaction.reply({ embeds: [embed] });
-    
   }
-});
-
-const REPLY = 'Губка Боб Квадратні штани!';
-
-client.on('messageCreate', (msg) => {
-  if(msg.author.bot) return;
-
-  console.log(msg.author.globalName,
-    msg.channel.name,
-    msg.content); 
-
-  if(msg.content === 'Хто проживає на дні океану?') 
-    msg.reply(REPLY);
-
-  if(msg.content === 'Шпаристий, жовтий, куди не зирни') 
-    msg.reply(REPLY);
-});
-
-client.login(process.env.TOKEN,);
+  */
