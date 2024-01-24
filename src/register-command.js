@@ -3,9 +3,9 @@
 require('dotenv').config();
 const { REST, Routes, ApplicationCommandOptionType } = require('discord.js');
 
-const commands = [];
+//const commands = [];
 
-/*
+
 const commands = [
     {
         name: 'hello',
@@ -44,7 +44,7 @@ const commands = [
         description: 'Send an embed',
     },
 ];
-*/
+
 
 
 const rest = new REST({ version: '10' })

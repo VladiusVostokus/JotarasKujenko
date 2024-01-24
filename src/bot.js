@@ -30,6 +30,7 @@ const roles = [
 
 client.on('ready', async (c) => {
   console.log(`${c.user.tag} is launched`);
+  /*
   try {
     const channel = await client.channels.cache.get('870227821614755893');
     if(!channel) return;
@@ -55,18 +56,52 @@ client.on('ready', async (c) => {
   } catch (error) {
     console.log(err);
   }
+  */
 });
 
-client.on('interactionCreate', async(interaction) => {
+client.on('interactionCreate', async(interaction) => { //async(interaction)
   
+  
+  //if(!interaction.isChatInputCommand()) return;
 
-  if(!interaction.isButton()) return;
+  if(!interaction.isButton() &&
+   !interaction.isChatInputCommand()) return;
 
-  await interaction.deferReply({ ephemeral: true});
+  if(interaction.commandName === 'hello') await interaction.reply('hello!');
 
-  // тут обробники \ команд
+  if(interaction.commandName === 'add') {
+    const num1 = interaction.options.get('first').value;
+
+    const num2 = interaction.options.get('second').value;
+
+    await interaction.reply(`Сума = ${num1 + num2}`);
+  }
+
+  if(interaction.commandName === 'embed')
+  {
+    const embed = new EmbedBuilder()
+      .setTitle('Назва вставки')
+      .setDescription('Опис')
+      .setColor('Green')
+      .addFields({ 
+        name: 'Назва', 
+        value: 'Значення', 
+        inline: true ,
+      },
+      { 
+        name: 'Назва2', 
+        value: 'Значення2', 
+        inline: true ,
+      })
+      .setImage('https://i.imgur.com/AfFp7pu.png');
+
+     await interaction.reply({ embeds: [embed] });
+  }
 
   if(interaction.isButton()) {
+
+    await interaction.deferReply({ ephemeral: true});
+  
     const role = interaction.guild.roles.cache.get(
       interaction.customId
     );
@@ -88,6 +123,7 @@ client.on('interactionCreate', async(interaction) => {
     await interaction.member.roles.add(role);
     await interaction.editReply(`Роль ${role} була назначена`);
   }
+  
 });
 
 const REPLY = 'Губка Боб Квадратні штани!';
