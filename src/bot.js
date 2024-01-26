@@ -10,6 +10,8 @@ const { Client,
   ButtonStyle, 
   ActivityType } = require('discord.js');
 
+const eventHandler = require('./handlers/eventHandler');
+
 const client = new Client({
   intents: [
     IntentsBitField.Flags.Guilds,
@@ -71,6 +73,8 @@ client.on('ready', async (c) => {
   }
   */
 });
+
+eventHandler(client);
 
 client.on('interactionCreate', async(interaction) => { //async(interaction)
   
