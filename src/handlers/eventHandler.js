@@ -12,5 +12,12 @@ module.exports = (client) => {
         //console.log(eventFiles);
         const eventName = eventFolder.split('\\').pop();
         //console.log(eventName);
+
+        client.on(eventName, async(arg) => {
+            for (const eventFile of eventFiles) {
+                const eventFunction = require(eventFile);
+                await eventFunction(client, arg);
+            }
+        });
     }
 };
