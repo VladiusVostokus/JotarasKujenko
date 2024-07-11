@@ -10,7 +10,7 @@ module.exports = (client) => {
     for (const eventFolder of eventFolders) {
         const eventFiles = getAllFiles(eventFolder);
         eventFiles.sort((a, b) => a > b);
-        console.log(eventFiles);
+        //console.log(eventFiles);
 
         const eventName = eventFolder.split('\\').pop();
         //console.log(eventName);
