@@ -2,11 +2,11 @@
 
 module.exports = {
     name: 'ping',
-    description: 'Pong!', 
+    description: 'Pong', 
     //devOnly: bool,
     //testOnly: bool,
     //options:[{array: of, all: aptions}, {some: other_options}],
-    //deleted: bool
+    //deleted: true,
     callback: (client, interaction) => {
         interaction.reply(`Pong! ${client.ws.ping} ms`);
     },

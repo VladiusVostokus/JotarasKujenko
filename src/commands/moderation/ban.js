@@ -4,7 +4,7 @@ const { ApplicationCommandOptionType, PermissionFlagsBits } = require('discord.j
 
 module.exports = {
     name: 'ban',
-    description: 'ban user', 
+    description: 'ban aaaaaaaaaaa user', 
     //devOnly: bool,
     //testOnly: bool,
     options:[
@@ -25,6 +25,7 @@ module.exports = {
     //deleted: bool,
 
     permissionsRequired: [PermissionFlagsBits.Administrator],
+    botPermissions: [PermissionFlagsBits.Administrator],
     
     callback: (client, interaction) => {
         interaction.reply(`YOU ARE BANNED`);
