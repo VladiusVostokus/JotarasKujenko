@@ -12,7 +12,7 @@ module.exports = (client) => {
         eventFiles.sort((a, b) => a > b);
         //console.log(eventFiles);
 
-        const eventName = eventFolder.split('\\').pop();
+        const eventName = eventFolder.replace(/\\/g, '/').split('/').pop();
         //console.log(eventName);
 
         client.on(eventName, async(arg) => {
