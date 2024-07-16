@@ -37,15 +37,8 @@ const roles = [
 ];
   
 
+/*
 client.on('ready', async (c) => {
-
-  console.log(`${c.user.tag} is launched`);
-  client.user.setActivity({
-    name: "Вірші Тараса Шевченка",
-    type: ActivityType.Listening,
-  });
-
-  /*
   try {
     const channel = await client.channels.cache.get('870227821614755893');
     if(!channel) return;
@@ -71,8 +64,8 @@ client.on('ready', async (c) => {
   } catch (error) {
     console.log(err);
   }
-  */
 });
+*/
 
 eventHandler(client);
 
