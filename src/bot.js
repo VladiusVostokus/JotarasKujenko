@@ -69,44 +69,10 @@ client.on('ready', async (c) => {
 
 eventHandler(client);
 
-client.on('interactionCreate', async(interaction) => { //async(interaction)
-  
-  
-  //if(!interaction.isChatInputCommand()) return;
+client.on('interactionCreate', async(interaction) => {
 
   if(!interaction.isButton() &&
    !interaction.isChatInputCommand()) return;
-
-  if(interaction.commandName === 'hello') await interaction.reply('hello!');
-
-  if(interaction.commandName === 'add') {
-    const num1 = interaction.options.get('first').value;
-
-    const num2 = interaction.options.get('second').value;
-
-    await interaction.reply(`Сума = ${num1 + num2}`);
-  }
-
-  if(interaction.commandName === 'embed')
-  {
-    const embed = new EmbedBuilder()
-      .setTitle('Назва вставки')
-      .setDescription('Опис')
-      .setColor('Green')
-      .addFields({ 
-        name: 'Назва', 
-        value: 'Значення', 
-        inline: true ,
-      },
-      { 
-        name: 'Назва2', 
-        value: 'Значення2', 
-        inline: true ,
-      })
-      .setImage('https://i.imgur.com/AfFp7pu.png');
-
-     await interaction.reply({ embeds: [embed] });
-  }
 
   if(interaction.isButton()) {
 
