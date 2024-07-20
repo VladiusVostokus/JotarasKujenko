@@ -29,9 +29,9 @@ module.exports = {
             required: true,
         }
     ],
-    callback: (client, interaction) => {
+    callback: async (client, interaction) => {
         const num1 = interaction.options.get('first').value;
         const num2 = interaction.options.get('second').value;
-        interaction.reply(`Сума = ${num1 + num2}`);
+        await interaction.reply(`Сума = ${num1 + num2}`);
     },
 };

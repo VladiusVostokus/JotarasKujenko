@@ -9,7 +9,7 @@ module.exports = {
     //testOnly: bool,
     //options:[{array: of, all: aptions}, {some: other_options}],
     //deleted: true,
-    callback: (client, interaction) => {
+    callback: async (client, interaction) => {
         const embed = new EmbedBuilder()
       .setTitle('Назва вставки')
       .setDescription('Опис')
@@ -26,6 +26,6 @@ module.exports = {
       })
       .setImage('https://i.imgur.com/AfFp7pu.png');
 
-      interaction.reply({ embeds: [embed] });
+      await interaction.reply({ embeds: [embed] });
     },
 };
