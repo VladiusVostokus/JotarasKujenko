@@ -2,9 +2,13 @@
 
 const Level = require('../../models/Level');
 const calculateLevel = require('../../utils/calculateLevelXP');
+const cooldowns = new Set();
 
 module.exports = async(client, msg) => {
-    if(!msg.inGuild() || msg.author.bot) return;
+
+    const authorId = msg.author.id;
+    if(!msg.inGuild() || msg.author.bot ||
+       cooldowns.has(authorId)) return;
 
     const query = {
         userId: msg.author.id,
@@ -27,6 +31,10 @@ module.exports = async(client, msg) => {
                             console.error('Saving updated level error', err);
                             return;
                        });
+            cooldowns.add(authorId);
+            setTimeout(() => {
+                cooldowns.delete(authorId);
+            }, 30000);
         }
         else {
             const newLevel = new Level({
@@ -35,6 +43,9 @@ module.exports = async(client, msg) => {
                 xp: xp,
             });
             await newLevel.save();
+            setTimeout(() => {
+                cooldowns.delete(authorId);
+            }, 30000);
         }
     } catch (err) {
         console.error('Giving XP error', err);
