@@ -32,9 +32,9 @@ module.exports = {
             return;
           }
       
-          let currentRank = fetchedLevel.level;
-          let currentXP = calculateLevelXp(currentRank) + fetchedLevel.xp;
-          interaction.editReply(`**Level: ${currentRank}, XP: ${currentXP}**`);
+          let currentLevel = fetchedLevel.level;
+          let currentXP = calculateLevelXp(currentLevel) + fetchedLevel.xp;
+          interaction.editReply(`**Level: ${currentLevel}, XP: ${currentXP}**`);
     },
 
     name: 'level',
