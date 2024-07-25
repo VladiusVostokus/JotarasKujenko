@@ -44,7 +44,7 @@ module.exports = {
     options:[
         { 
             name: 'target-user',
-            description: 'Whose user see the level',
+            description: 'Whose level to see',
             type: ApplicationCommandOptionType.Mentionable,
         }, 
     ],
