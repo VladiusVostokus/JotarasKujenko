@@ -15,4 +15,5 @@ some simple commands like:
 - /ban, which reply message, but can't ban
 - /embed, which send an embed
 - /hello reply with "hello!"
+  
 in future this commands will be deleted or modified, because they are only created to learn how to create some stuff
