@@ -4,19 +4,19 @@ const path = require('path');
 const getAllFiles = require("./getAllFiles");
 
 module.exports = (dir, exceptions = []) => {
-    let localCommands = [];
-    const commandCategories = getAllFiles(path.join(__dirname, '..', dir), true);
+    let localObjects = [];
+    const objectsCategories = getAllFiles(path.join(__dirname, '..', dir), true);
     //console.log(commandCategories);
 
-    for (const commandCategory of commandCategories) {
-        const commandFiles = getAllFiles(commandCategory);
+    for (const objectCategory of objectsCategories) {
+        const objectFiles = getAllFiles(objectCategory);
         //console.log(commandFiles);
-        for (const commandFile of commandFiles) {
-            const commandObject = require(commandFile);
-            if (exceptions.includes(commandObject.name)) continue;
-            localCommands.push(commandObject);
+        for (const objectFile of objectFiles) {
+            const localObject = require(objectFile);
+            if (exceptions.includes(localObject.name)) continue;
+            localObjects.push(localObject);
         }
     }
 
-    return localCommands;
+    return localObjects;
 };
