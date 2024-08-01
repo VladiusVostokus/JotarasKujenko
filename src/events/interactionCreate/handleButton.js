@@ -1,11 +1,11 @@
 'use strict';
 
-const getButtons = require("../../utils/getButtons");
+const getFileObjects = require("../../utils/getFileObjects");
 
 module.exports = async(client, interaction) => {
   if(!interaction.isButton()) return;
 
-  const buttons = getButtons();
+  const buttons = getFileObjects('buttons');
   try {
     const button = buttons.find((btn) => btn.customId === interaction.customId);
 

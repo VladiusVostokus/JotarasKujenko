@@ -1,12 +1,12 @@
 'use strict';
 
 const { testServer, devs } = require('../../../config.json');
-const getLocalCommands = require('../../utils/getLocalCommands');
+const getFileObjects = require('../../utils/getFileObjects');
 
 module.exports = async(client, interaction) => {
     if(!interaction.isChatInputCommand()) return;
 
-    const localCommands = getLocalCommands();
+    const localCommands = getFileObjects('commands');
 
     try {
         const commandObject = localCommands.find((cmd) => cmd.name === interaction.commandName);
