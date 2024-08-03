@@ -2,7 +2,7 @@
 
 const getFileObjects = require("../../utils/getFileObjects");
 
-module.exports = async(client, interaction) => {
+module.exports = async(interaction, client) => {
   if(!interaction.isButton()) return;
 
   const buttons = getFileObjects('buttons');

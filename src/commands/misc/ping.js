@@ -1,13 +1,15 @@
 'use strict';
 
 module.exports = {
-    name: 'ping',
-    description: 'Pong', 
+    data: {
+        name: 'ping',
+        description: 'Pong', 
+    },
     //devOnly: bool,
     //testOnly: bool,
     //options:[{array: of, all: aptions}, {some: other_options}],
     //deleted: true,
-    callback: async (client, interaction) => {
+    run: async ({ client, interaction, handler }) => {
         await interaction.reply(`Pong! ${client.ws.ping} ms`);
     },
 };

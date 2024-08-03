@@ -5,7 +5,7 @@ const { Client, IntentsBitField } = require('discord.js');
 const mongoose = require('mongoose');
 const { CommandKit } = require('commandkit');
 
-const eventHandler = require('./handlers/eventHandler');
+//const eventHandler = require('./handlers/eventHandler');
 
 const client = new Client({
   intents: [
@@ -14,6 +14,15 @@ const client = new Client({
     IntentsBitField.Flags.GuildMessages,
     IntentsBitField.Flags.MessageContent,
   ],
+});
+
+new CommandKit({
+  client,
+  devGuildIds: ['870227821614755890'],
+  devUserIds: ['496191080899936268'],
+  eventsPath: `${__dirname}/events`,
+  commandsPath: `${__dirname}/commands`,
+  //bulkRegister: true,
 });
 
 (async () => {
@@ -26,5 +35,5 @@ const client = new Client({
   }  
 })();
 
-eventHandler(client);
+//eventHandler(client);
 client.login(process.env.TOKEN);

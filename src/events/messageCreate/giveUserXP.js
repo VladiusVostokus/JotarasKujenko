@@ -4,7 +4,7 @@ const Level = require('../../models/Level');
 const calculateLevel = require('../../utils/calculateLevelXP');
 const cooldowns = new Set();
 
-module.exports = async(client, msg) => {
+module.exports = async(msg, client) => {
 
     const authorId = msg.author.id;
     if(!msg.inGuild() || msg.author.bot ||
