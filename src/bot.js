@@ -22,7 +22,7 @@ new CommandKit({
   devUserIds: ['496191080899936268'],
   eventsPath: `${__dirname}/events`,
   commandsPath: `${__dirname}/commands`,
-  //bulkRegister: true,
+  bulkRegister: true,
 });
 
 (async () => {

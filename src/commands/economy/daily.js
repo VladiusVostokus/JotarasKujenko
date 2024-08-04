@@ -4,13 +4,18 @@ const Balance = require('../../models/Balance');
 const dailyReward = 1000;
 
 module.exports = {
-    name: 'daily',
-    description: 'Gain daily reward', 
+    data: {
+        name: 'daily',
+        description: 'Gain daily reward',
+    },
+    options: {
+        devOnly: true
+    },
     //devOnly: bool,
     //testOnly: bool,
     //options:[{array: of, all: aptions}, {some: other_options}],
     //deleted: true,
-    callback: async (client, interaction) => {
+    run: async ({ interaction }) => {
         if (!interaction.inGuild()) {
             await interaction.reply({
                 content: 'You can run this command on this server only',
