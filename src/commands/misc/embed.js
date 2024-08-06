@@ -8,6 +8,10 @@ module.exports = {
         description: 'Send an embed',
     },
 
+    options: {
+      devOnly: true
+    },
+
     run: async ({ interaction }) => {
         const embed = new EmbedBuilder()
       .setTitle('Назва вставки')

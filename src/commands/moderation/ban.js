@@ -28,6 +28,7 @@ module.exports = {
     options: {
         permissionsRequired: [PermissionFlagsBits.Administrator],
         botPermissions: [PermissionFlagsBits.Administrator],
+        devOnly: true,
     },
     run: ({ interaction }) => {
         interaction.reply(`YOU ARE BANNED`);

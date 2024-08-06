@@ -5,6 +5,9 @@ module.exports = {
         name: 'ping',
         description: 'Pong', 
     },
+    options: {
+        devOnly: true
+    },
     //devOnly: bool,
     //testOnly: bool,
     //options:[{array: of, all: aptions}, {some: other_options}],

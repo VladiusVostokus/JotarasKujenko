@@ -5,10 +5,9 @@ module.exports = {
         name: 'hello',
         description: 'Replies with hello', 
     },
-    //devOnly: bool,
-    //testOnly: bool,
-    //options:[{array: of, all: aptions}, {some: other_options}],
-    //deleted: true,
+    options: {
+        devOnly: true
+    },
     run: async ({ interaction }) => {
         await interaction.reply('hello!');
     },

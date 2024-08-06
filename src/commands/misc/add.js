@@ -31,6 +31,9 @@ module.exports = {
             }
         ],
     },
+    options: {
+        devOnly: true
+    },
     run: async ({ interaction }) => {
         const num1 = interaction.options.get('first').value;
         const num2 = interaction.options.get('second').value;
