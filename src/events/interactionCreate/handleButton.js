@@ -8,7 +8,8 @@ module.exports = async(interaction, client) => {
   const buttons = getFileObjects('buttons');
   try {
     const button = buttons.find((btn) => btn.customId === interaction.customId);
-
+    if (!button) return;
+    
   if(interaction.isButton()) {
     await button.callback(client,interaction);
   }

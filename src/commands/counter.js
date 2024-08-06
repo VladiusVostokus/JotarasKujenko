@@ -1,3 +1,5 @@
+'use strict';
+
 const { ButtonKit } = require('commandkit');
 const { ButtonStyle, ActionRowBuilder } = require('discord.js');
 
@@ -7,7 +9,8 @@ module.exports = {
         description: 'some counter',
     },
     options: {
-        devOnly: true
+        devOnly: true,
+        //deleted: true,
     },
 
     run: async({ interaction, client }) => {
