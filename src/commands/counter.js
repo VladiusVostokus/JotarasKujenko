@@ -19,7 +19,7 @@ module.exports = {
         .setEmoji('👍')
         .setStyle(ButtonStyle.Primary)
         .setCustomId('button'); // Required to use onClick
-
+        
         const buttonRow = new ActionRowBuilder().addComponents(button);
         const channel = await client.channels.cache.get('870227821614755893');
         const message = await channel.send({ components: [buttonRow] });

@@ -1,6 +1,7 @@
 'use strict';
 
-const { ActionRowBuilder, ButtonBuilder, ButtonStyle } = require('discord.js');
+const { ButtonKit } = require('commandkit');
+const { ButtonStyle, ActionRowBuilder } = require('discord.js');
 
 const roles = [
     {
@@ -23,24 +24,64 @@ module.exports = async(client) => {
         if(!channel) return;
     
         const row = new ActionRowBuilder();
+        const buttons = [];
     
         for(const role of roles) {
-          row.components.push(
-            new ButtonBuilder()
-              .setCustomId(role.id)
-              .setLabel(role.label)
-              .setStyle(ButtonStyle.Primary)
-          )
+          const button = new ButtonKit()
+            .setCustomId(role.id)
+            .setLabel(role.label)
+            .setStyle(ButtonStyle.Primary);
+          row.components.push(button);
+          buttons.push(button);
         }
     
-        await channel.send({
+        const message = await channel.send({
           content: 'Додайте чи видаліть роль',
           components: [row]
         });
+
+        const b1 = buttons[0];
+        const b2 = buttons[1];
+        const b3 = buttons[2];
+
+        b1.onClick(async(interaction) => {
+          await changeRole(interaction)
+        },{ message });
+
+        b2.onClick(async(interaction) => {
+          await changeRole(interaction)
+        },{ message });
+
+        b3.onClick(async(interaction) => {
+          await changeRole(interaction)
+        },{ message });
     
-        //process.exit();
-    
-      } catch (err) {
-        console.error('Sending role error:', err);
-      }
-}
+    } catch (err) {
+      console.error('Sending role error:', err);
+  }
+};
+
+const changeRole = async(interaction) => {
+  await interaction.deferReply({ ephemeral: true});
+  
+  const role = interaction.guild.roles.cache.get(
+      interaction.customId
+  );
+
+  if(!role) {
+      interaction.editReply({
+          content: 'Ролі не існує',
+      });
+      return;
+  }
+
+  const hasRole = interaction.member.roles.cache.has(role.id);
+
+  if (hasRole) {
+      await interaction.member.roles.remove(role);
+      await interaction.editReply(`Роль ${role} була взнята`);
+      return;
+  }
+  await interaction.member.roles.add(role);
+  await interaction.editReply(`Роль ${role} була назначена`);
+};
