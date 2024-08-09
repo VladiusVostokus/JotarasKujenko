@@ -17,3 +17,5 @@ some simple commands like:
 - /hello reply with "hello!"
   
 in future this commands will be deleted or modified, because they are only created to learn how to create some stuff
+
+Bot uses CommandKit for handling events and command. Earlier custum event handler was used, but I change it, because this lib to simplify handling.
