@@ -3,13 +3,16 @@
 const { EmbedBuilder } = require('discord.js');
 
 module.exports = {
-    name: 'embed',
-    description: 'Send an embed',
-    //devOnly: bool,
-    //testOnly: bool,
-    //options:[{array: of, all: aptions}, {some: other_options}],
-    //deleted: true,
-    callback: async (client, interaction) => {
+    data: {
+        name: 'embed',
+        description: 'Send an embed',
+    },
+
+    options: {
+      devOnly: true
+    },
+
+    run: async ({ interaction }) => {
         const embed = new EmbedBuilder()
       .setTitle('Назва вставки')
       .setDescription('Опис')

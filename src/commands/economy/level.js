@@ -6,7 +6,7 @@ const calculateLevelXp = require('../../utils/calculateLevelXP');
 
 module.exports = {
     
-    callback: async (client, interaction) => {
+    run: async ({ interaction }) => {
         if (!interaction.inGuild()) {
             await interaction.reply('You can only run this command inside a server.');
             return;
@@ -37,16 +37,19 @@ module.exports = {
           interaction.editReply(`**Level: ${currentLevel}, XP: ${currentXP}**`);
     },
 
-    name: 'level',
-    description: 'Show level', 
-    //devOnly: bool,
-    //testOnly: bool,
-    options:[
-        { 
-            name: 'target-user',
-            description: 'Whose level to see',
-            type: ApplicationCommandOptionType.Mentionable,
-        }, 
-    ],
-    //deleted: true,
+    data: {
+      name: 'level',
+      description: 'Show level', 
+      options:[
+          { 
+              name: 'target-user',
+              description: 'Whose level to see',
+              type: ApplicationCommandOptionType.Mentionable,
+          }, 
+      ],
+    },
+    options: {
+      devOnly: true,
+      //deleted: true,
+    }
 };

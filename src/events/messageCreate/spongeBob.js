@@ -1,6 +1,6 @@
 'use strict';
 
-module.exports = async(client, msg) => {
+module.exports = async(msg, client) => {
     const REPLY = 'Губка Боб Квадратні штани!';
 
     if(msg.author.bot) return;

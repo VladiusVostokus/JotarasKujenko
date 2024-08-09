@@ -1,11 +1,11 @@
 'use strict';
 
-const { ApplicationCommandOptionType } = require('discord.js');
+const { ApplicationCommandOptionType, SlashCommandBuilder } = require('discord.js');
 const Balance = require('../../models/Balance');
 
 module.exports = {
     
-    callback: async (client, interaction) => {
+    run: async ({ interaction }) => {
         if (!interaction.inGuild()) {
             await interaction.reply({
                 content: 'You can run this command on this server only',
@@ -36,16 +36,19 @@ module.exports = {
           );
     },
 
-    name: 'balance',
-    description: 'Show balance', 
-    //devOnly: bool,
-    //testOnly: bool,
-    options:[
-        { 
-            name: 'target-user',
-            description: 'Whose balance to see',
-            type: ApplicationCommandOptionType.Mentionable,
-        }, 
-    ],
-    //deleted: true,
+    data: {
+        name: 'balance',
+        description: 'Show balance', 
+        options:[
+            { 
+                name: 'target-user',
+                description: 'Whose balance to see',
+                type: ApplicationCommandOptionType.Mentionable,
+            }, 
+        ],
+    },
+    options: { 
+        devOnly: true,
+        //deleted: true,
+    },
 };
